@@ -1,10 +1,9 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { AfterViewInit, Component, ElementRef, OnInit } from "@angular/core";
 import Quill from "quill";
+import { MediaUploadControl, MediaUploader, QuillMediaMimeTypes, QuillMediaModules } from "quill-media-uploader";
 import { of } from "rxjs";
 import { delay } from "rxjs/operators";
-import MediaUploader from "src/utils/quill-media/modules/media-uploader";
-import { MediaUploadControl, QuillMediaModules, QuillMediaMimeTypes } from "src/utils/quill-media/quill-media.interfaces";
 
 @Component({
     selector: "app-root",
@@ -27,22 +26,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         const types: QuillMediaMimeTypes = {
-            // file: "*/*",
-            // file: ["audio/*", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ],
             image: "image/*",
             audio: "audio/*",
             video: "video/*",
             upload: {
-                // image: "image/*",
-                // audio: "audio/*",
-                // video: "video/*",
-                // office: ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"],
                 pdf: "application/pdf",
-                // word: ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"],
-                // excel: ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],
-                // powerpoint: ["application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"],
                 office: {
-                    // pdf: "application/pdf",
                     word: ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"],
                     excel: ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],
                     powerpoint: ["application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"]
@@ -81,7 +70,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             },
             mediaUploader: {
                 upload: (type: string, file: File) => {
-                    return of("https://www.google.de").pipe(delay(Math.floor(Math.random() * (10000 - 500 + 1) + 500)));
+                    return of("https://github.com/stein-t/quill-media-uploader#readme").pipe(delay(Math.floor(Math.random() * (10000 - 500 + 1) + 500)));
                 },
                 uploadError: (type: string, file: string, err: HttpErrorResponse) => {
                     const message = `Failed to upload file ${file}. ${err.status ? err.status + ": " : ""}${err.statusText ? err.statusText + " " : ""}${err.message}`;

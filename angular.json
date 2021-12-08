@@ -31,7 +31,7 @@
               "./node_modules/quill/dist/quill.core.css",
               "./node_modules/quill/dist/quill.bubble.css",
               "./node_modules/quill/dist/quill.snow.css",
-              "./src/utils/quill-media/assets/quill.upload.scss",
+              "./node_modules/quill-media-uploader/src/assets/quill.upload.scss",
               "src/styles.scss"
             ],
             "scripts": [
